@@ -30,9 +30,9 @@ pipeline{
         stage('Deploy'){
             steps{
                     
-		 sh "sudo docker build . -t appandaraj18/petclinic"
-		 sh "sudo docker run -d -p 8091:8080 appandaraj18/petclinic"
-                //ansiblePlaybook credentialsId: 'ubuntu', disableHostKeyChecking: true, inventory: '/etc/ansible/hosts', playbook: './petclinic_latest.yml' 
+		 //sh "sudo docker build . -t appandaraj18/petclinic"
+		 //sh "sudo docker run -d -p 8091:8080 appandaraj18/petclinic"
+                ansiblePlaybook credentialsId: 'ubuntu', disableHostKeyChecking: true, inventory: '/etc/ansible/hosts', playbook: './petclinic_latest.yml' 
                 //sh "sudo /opt/puppetlabs/bin/puppet agent -t"   
             }
         }
